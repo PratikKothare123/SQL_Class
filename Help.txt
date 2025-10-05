@@ -1,0 +1,6 @@
+1. Re-Verify the Password in the Terminal
+
+& "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+
+Enter Correct SQL Pass- NewPassword@123!
+
