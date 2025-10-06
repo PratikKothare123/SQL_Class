@@ -1,1 +1,9 @@
 SHOW DATABASES;
+
+CREATE TABLE users (
+    id VARCHAR(50) PRIMARY KEY,
+    username VARCHAR(20) UNIQUE,
+    email VARCHAR(20) UNIQUE NOT NULL,
+    password VARCHAR(10) NOT NULL
+);
+
