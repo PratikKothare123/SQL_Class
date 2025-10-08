@@ -11,11 +11,22 @@ const connection = mysql.createConnection({
 });
 
 
+
+//Inserting new data into table
+
+
+let q = "INSERT INTO users (id, username, email, password) VALUES ?";
+let users =[
+  ["123pk", "Prahgttik", "koa@gmail.com", "Psd23"],
+  ["123add", "Prsdatika", "ko@gmail.coxma", "P23a"]
+];
+
 try{
-    connection.query("SHOW TABLES",(err,result)=>{
-  if(err) throw err;
-  console.log(result);
-});
+  connection.query(q , [users], (err, result)=>{
+    if (err) throw err;
+    console.log(result);
+  });
+
 }catch(err){
   console.log(err);
 }
