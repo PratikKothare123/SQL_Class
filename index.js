@@ -1,6 +1,7 @@
 const { faker } = require('@faker-js/faker');
-
 const mysql = require('mysql2');
+const express= require("express");
+const app= express();
 
 
 const connection = mysql.createConnection({
@@ -10,28 +11,23 @@ const connection = mysql.createConnection({
   password: 'NewPassword@123!'
 });
 
+app.get("/",(req,res)=>{
+  res.send("Welcome To Home Page!!!");
+});
 
+let port=8080;
+app.listen(port,()=>{
+  console.log('App listing On port: ',port);
+})
 
 //Inserting new data into table
 
 
-let q = "INSERT INTO users (id, username, email, password) VALUES ?";
-let users =[
-  ["123pk", "Prahgttik", "koa@gmail.com", "Psd23"],
-  ["123add", "Prsdatika", "ko@gmail.coxma", "P23a"]
-];
 
-try{
-  connection.query(q , [users], (err, result)=>{
-    if (err) throw err;
-    console.log(result);
-  });
 
-}catch(err){
-  console.log(err);
-}
 
-connection.end();
+
+// connection.end();
 
 
 
@@ -49,3 +45,13 @@ let createRandomUser = () => {
 
 
 // console.log(createRandomUser());
+
+// try{
+//   connection.query(q , [users], (err, result)=>{
+//     if (err) throw err;
+//     console.log(result);
+//   });
+
+// }catch(err){
+//   console.log(err);
+// }
