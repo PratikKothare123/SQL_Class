@@ -4,3 +4,5 @@
 
 Enter Correct SQL Pass- NewPassword@123!
 
+Test connection
+ssh -T git@github.com
