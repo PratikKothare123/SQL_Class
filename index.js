@@ -2,6 +2,12 @@ const { faker } = require('@faker-js/faker');
 const mysql = require('mysql2');
 const express= require("express");
 const app= express();
+const path=require("path");
+
+
+
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname, "/views"));
 
 
 const connection = mysql.createConnection({
@@ -16,8 +22,9 @@ app.get("/",(req,res)=>{
 try{
   connection.query(q ,(err, result)=>{
     if (err) throw err;
-    console.log(result[0]["count(*)"]);     // in output display key value pair in array, so we print 0th index then we want only value so access key 
-    res.send("Successful !!!");
+    console.log(result[0]["count(*)"]); 
+    let value=result[0]["count(*)"]    // in output display key value pair in array, so we print 0th index then we want only value so access key 
+    res.render("home.ejs",{value});
   });
 
 }catch(err){
