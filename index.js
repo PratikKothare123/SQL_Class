@@ -12,8 +12,20 @@ const connection = mysql.createConnection({
 });
 
 app.get("/",(req,res)=>{
-  res.send("Welcome To Home Page!!!");
+  q='SELECT count(*) FROM users';
+try{
+  connection.query(q ,(err, result)=>{
+    if (err) throw err;
+    console.log(result[0]["count(*)"]);     // in output display key value pair in array, so we print 0th index then we want only value so access key 
+    res.send("Successful !!!");
+  });
+
+}catch(err){
+  console.log(err);
+  res.send("Some error ocured in DB!!!");
+}
 });
+
 
 let port=8080;
 app.listen(port,()=>{
@@ -34,7 +46,7 @@ app.listen(port,()=>{
 let createRandomUser = () => {
   return {
     userId: faker.string.uuid(),
-    username: faker.internet.username(),
+    username: faker.internet.username(), // before version 9.1.0, use userName()
     email: faker.internet.email(),
     avatar: faker.image.avatar(),
     password: faker.internet.password(),
@@ -55,3 +67,6 @@ let createRandomUser = () => {
 // }catch(err){
 //   console.log(err);
 // }
+
+//Inserting new data into table
+
