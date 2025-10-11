@@ -17,6 +17,7 @@ const connection = mysql.createConnection({
   password: 'NewPassword@123!'
 });
 
+
 app.get("/",(req,res)=>{
   q='SELECT count(*) FROM users';
 try{
@@ -27,8 +28,8 @@ try{
     res.render("home.ejs",{value});
   });
 
-}catch(err){
-  console.log(err);
+}catch(error){
+  console.log(error);
   res.send("Some error ocured in DB!!!");
 }
 });
