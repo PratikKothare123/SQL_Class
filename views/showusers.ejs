@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Show Users Data</title>
 </head>
 <body>
-    
+    <table border="2px">
+        
+
+        <tr>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>User Pass</th>
+        </tr>
+
+        <%  for(let user of users){  %>
+            <tr>
+                <td><%= user.id %> </td>
+                <td><%= user.username %> </td>
+                <td><%= user.email %> </td>
+                <td><%= user.password %> </td>
+            </tr>
+        
+
+
+         <% } %>
+    </table>
+
+
 </body>
 </html>

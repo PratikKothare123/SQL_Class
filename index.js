@@ -36,16 +36,16 @@ try{
 
 
 app.get("/user",(req,res)=>{
-  q=`SELECT * FROM users`;
+  q= `SELECT * FROM users`;
+  
   try{
-  connection.query(q ,(err, result)=>{
+  connection.query(q ,(err, users)=>{
     if (err) throw err;
-    res.send(result);
-    // res.render("home.ejs",{value});
+    res.render("showusers.ejs",{users});
   });
 
-}catch(error){
-  console.log(error);
+}catch(err){
+  console.log(err);
   res.send("Some error ocured in DB!!!");
 }
 });
