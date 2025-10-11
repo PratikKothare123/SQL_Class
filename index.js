@@ -35,6 +35,22 @@ try{
 });
 
 
+app.get("/user",(req,res)=>{
+  q=`SELECT * FROM users`;
+  try{
+  connection.query(q ,(err, result)=>{
+    if (err) throw err;
+    res.send(result);
+    // res.render("home.ejs",{value});
+  });
+
+}catch(error){
+  console.log(error);
+  res.send("Some error ocured in DB!!!");
+}
+});
+
+
 let port=8080;
 app.listen(port,()=>{
   console.log('App listing On port: ',port);
@@ -67,7 +83,7 @@ let createRandomUser = () => {
 // console.log(createRandomUser());
 
 // try{
-//   connection.query(q , [users], (err, result)=>{
+//   connection.query( [users], (err, result)=>{
 //     if (err) throw err;
 //     console.log(result);
 //   });
