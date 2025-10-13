@@ -17,19 +17,19 @@
         </tr>
 
         <%  for(let user of users){  %>
+            
             <tr>
                 <td><%= user.id %> </td>
                 <td><%= user.username %> </td>
                 <td><%= user.email %> </td>
                 <td><%= user.password %> </td>  
-                 <td><button> edit</button></td> 
+                <td>
+                    <form method="get" action="/user/'<%= user.id %>'/edit">
+                        <button>Edit Username</button>
+                    </form>
+                </td>
             </tr>
-           
-            
-        
-
-
-         <% } %>
+        <% } %>
     </table>
 
 

@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
   password: 'NewPassword@123!'
 });
 
-
+// HOME ROUTE
 app.get("/",(req,res)=>{
   q='SELECT count(*) FROM users';
 try{
@@ -34,7 +34,7 @@ try{
 }
 });
 
-
+// SHOW ROUTE
 app.get("/user",(req,res)=>{
   q= `SELECT * FROM users`;
   
@@ -49,6 +49,28 @@ app.get("/user",(req,res)=>{
   res.send("Some error ocured in DB!!!");
 }
 });
+
+// EDIT ROUTE
+app.get("/user/:id/edit",(req,res)=>{
+  let {id}=req.params;
+  q=`SELECT * FROM users WHERE id=${id}`;
+
+
+try{
+  connection.query(q ,(err, result)=>{
+    if (err) throw err;
+    let user=result[0]
+    res.render("edit.ejs",{user});
+  });
+}catch(err){
+  console.log(err);
+  res.send("Some error ocured in DB!!!");
+}
+});
+
+app.patch("/user/:id/edit/:username&password",(req,res)=>{
+  
+})
 
 
 let port=8080;
