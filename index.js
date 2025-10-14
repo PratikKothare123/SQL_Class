@@ -27,7 +27,7 @@ try{
   connection.query(q ,(err, result)=>{
     if (err) throw err;
     console.log(result[0]["count(*)"]); 
-    let value=result[0]["count(*)"]    // in output display key value pair in array, so we print 0th index then we want only value so access key 
+    let value=result[0]["count(*)"]    // in output display key value pair in array, so we print 0th index then we grt only value so access key 
     res.render("home.ejs",{value});
   });
 
@@ -52,6 +52,7 @@ app.get("/user",(req,res)=>{
   res.send("Some error ocured in DB!!!");
 }
 });
+
 
 // EDIT ROUTE
 app.get("/user/:id/edit",(req,res)=>{
@@ -106,9 +107,6 @@ app.listen(port,()=>{
 })
 
 //Inserting new data into table
-
-
-
 
 
 
